@@ -69,3 +69,24 @@ GitHub Pages는 정적 사이트이므로 비밀번호가 코드 안에 들어�
 - 외부에 공개되면 안 되는 학교 업무 자료
 
 이 기능은 어디까지나 선생님이 혼자 관리할 때 편하게 보기 위한 간단한 화면 숨김 기능입니다.
+
+
+## 웹앱별 코드 수정 URL 설정
+
+관리자 모드에서 각 카드의 `코드 수정 URL 열기` 버튼은 `apps.js`의 `editUrl` 값을 사용합니다.
+
+Apps Script로 만든 웹앱이라면 `editUrl`에 연결된 Google Sheet 주소 또는 Apps Script 편집기 주소를 넣으세요.
+
+```js
+{
+  title: "상담기록 웹앱",
+  description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
+  category: "교사업무용",
+  status: "베타",
+  url: "https://script.google.com/macros/s/웹앱주소/exec",
+  editUrl: "https://docs.google.com/spreadsheets/d/구글시트ID/edit"
+}
+```
+
+상단 관리자 패널의 `아카이브 목록 수정`은 이 GitHub Pages 사이트의 `apps.js`를 수정하는 주소입니다.
+각 웹앱 카드 안의 `코드 수정 URL 열기`는 해당 웹앱마다 직접 설정한 `editUrl`로 이동합니다.

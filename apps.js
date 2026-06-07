@@ -1,11 +1,13 @@
 // 이 파일에서 웹앱 목록만 수정하면 됩니다.
-// url 부분에 실제 웹앱 주소를 넣으세요.
+// url: 실제 웹앱 접속 주소
+// editUrl: 해당 웹앱의 코드 수정 또는 관리용 주소
+//         Apps Script로 만든 웹앱이라면 연결된 Google Sheet 주소나 Apps Script 편집기 주소를 넣으면 됩니다.
 
 // 관리자 모드 설정입니다.
 // 중요: 이 비밀번호는 '진짜 보안 로그인'이 아니라 화면 숨김용입니다.
 // GitHub Pages는 정적 사이트라서 이 값이 코드에 보일 수 있습니다.
 const adminConfig = {
-  password: "1026", // 원하는 비밀번호로 바꾸세요.
+  password: "1234", // 원하는 비밀번호로 바꾸세요.
   githubUser: "", // 비워두면 github.io 주소에서 자동 추정합니다.
   repositoryName: "webapp-archive", // 저장소 이름이 다르면 바꾸세요.
   editFilePath: "apps.js"
@@ -17,42 +19,32 @@ const apps = [
     description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
     category: "교사업무용",
     status: "베타",
-    url: "https://script.google.com/a/macros/senedu.kr/s/AKfycbwyc7YVJMT0yffn9eOjAnB6oP_mskJqANBpMcVme4SyrJlSIzPdE0ghKkk2bWDvMhMzMQ/exec"
+    url: "https://example.com/counseling",
+    editUrl: "https://docs.google.com/spreadsheets/d/여기에_상담기록_시트_ID/edit"
   },
   {
     title: "과학 서논술형 채점",
     description: "중3 과학 - 복사평형 서논술형 자동 채점 웹앱입니다.",
     category: "수업용",
     status: "베타",
-    url: "https://script.google.com/macros/s/AKfycbxfCF_HOCmIvVmTInPAFqrZYjLDd7nLlebPObAXFKIu1H_qhP5kRryIGQWMEWyggnSp/exec"
+    url: "https://example.com/science-grading",
+    editUrl: "https://docs.google.com/spreadsheets/d/여기에_과학채점_시트_ID/edit"
   },
   {
     title: "수학 형성평가 채점 도우미",
-    description: "정수와 유리수 서논술형 형성평가 피드백 도우미 웹앱입니다.",
+    description: "점수와 윤리수 서논술형 형성평가 피드백 도우미 웹앱입니다.",
     category: "수업용",
     status: "베타",
-    url: "https://script.google.com/macros/s/AKfycbyqi0qRJuOCiuNvfLlVuJmDee_QE4TXBrtvx7HqizL8dEEoh6sC-3OM2bv0lb7qBcGF/exec"
+    url: "https://example.com/math-formative-check",
+    editUrl: "https://docs.google.com/spreadsheets/d/여기에_수학채점_시트_ID/edit"
   },
   {
     title: "인수분해 연습 게임",
     description: "인수분해를 연습할 수 있는 게임 웹앱입니다.",
     category: "수업용",
     status: "운영중",
-    url: "https://script.google.com/macros/s/AKfycby8EVxHBPZrYngLnKZanNKE7yFD9Wond_ZtOtsXcE7cbMfsKvz1YEhmUpwSm_IuuVmJ/exec"
-  },
-  {
-    title: "테스트 중",
-    description: "신일중학교 업무 보조 웹앱입니다.",
-    category: "교사업무용",
-    status: "베타",
-    url: "https://example.com/document-draft"
-  },
-  {
-    title: "테스트용 새 웹앱",
-    description: "아직 기능을 점검하고 있는 테스트 단계의 웹앱입니다.",
-    category: "테스트중",
-    status: "중단",
-    url: "https://example.com/test-app"
+    url: "https://example.com/factorization-game",
+    editUrl: "https://docs.google.com/spreadsheets/d/여기에_인수분해게임_시트_ID/edit"
   }
 ];
 
@@ -95,7 +87,8 @@ function getRepositoryInfo() {
   };
 }
 
-function getCodeEditUrl() {
+// 이 아카이브 사이트의 apps.js 파일을 수정하는 GitHub 주소입니다.
+function getArchiveCodeEditUrl() {
   const { user, repo } = getRepositoryInfo();
 
   if (!user || !repo) {
@@ -107,13 +100,17 @@ function getCodeEditUrl() {
 
 function updateAdminLinks() {
   const currentUrl = window.location.href;
-  const editUrl = getCodeEditUrl();
+  const archiveEditUrl = getArchiveCodeEditUrl();
 
   currentSiteLink.href = currentUrl;
   currentSiteLink.textContent = currentUrl;
 
-  codeEditLink.href = editUrl;
-  codeEditLink.textContent = editUrl;
+  codeEditLink.href = archiveEditUrl;
+  codeEditLink.textContent = archiveEditUrl;
+}
+
+function getAppEditUrl(app) {
+  return app.editUrl || getArchiveCodeEditUrl();
 }
 
 function renderAdminCardLinks(app) {
@@ -121,11 +118,13 @@ function renderAdminCardLinks(app) {
     return "";
   }
 
+  const appEditUrl = getAppEditUrl(app);
+
   return `
     <div class="admin-card-area">
       <p class="admin-card-title">관리자 확인용</p>
       <a class="mini-link" href="${app.url}" target="_blank" rel="noopener noreferrer">사이트 URL 확인</a>
-      <a class="mini-link" href="${getCodeEditUrl()}" target="_blank" rel="noopener noreferrer">코드 수정 URL 열기</a>
+      <a class="mini-link" href="${appEditUrl}" target="_blank" rel="noopener noreferrer">코드 수정 URL 열기</a>
     </div>
   `;
 }
