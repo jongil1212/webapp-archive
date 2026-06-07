@@ -7,14 +7,14 @@ const apps = [
     description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
     category: "교사업무용",
     status: "베타",
-    url: "https://example.com/counseling"
+    url: "https://script.google.com/a/macros/senedu.kr/s/AKfycbwyc7YVJMT0yffn9eOjAnB6oP_mskJqANBpMcVme4SyrJlSIzPdE0ghKkk2bWDvMhMzMQ/exec"
   },
   {
-    title: "만족도조사 분석기",
-    description: "구글폼 만족도 조사 결과를 붙여넣고 AI로 요약하는 웹앱입니다.",
-    category: "연수용",
-    status: "운영중",
-    url: "https://example.com/survey-analysis"
+    title: "과학 서논술형 채점",
+    description: "중3 과학-복사평형 단원 서논술형 평가 자동 채점 웹앱입니다.",
+    category: "수업용",
+    status: "베타",
+    url: "https://script.google.com/macros/s/AKfycbxfCF_HOCmIvVmTInPAFqrZYjLDd7nLlebPObAXFKIu1H_qhP5kRryIGQWMEWyggnSp/exec"
   },
   {
     title: "발표 순서 뽑기",
