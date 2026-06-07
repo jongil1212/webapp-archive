@@ -5,7 +5,7 @@
 // 중요: 이 비밀번호는 '진짜 보안 로그인'이 아니라 화면 숨김용입니다.
 // GitHub Pages는 정적 사이트라서 이 값이 코드에 보일 수 있습니다.
 const adminConfig = {
-  password: "1234", // 원하는 비밀번호로 바꾸세요.
+  password: "1026", // 원하는 비밀번호로 바꾸세요.
   githubUser: "", // 비워두면 github.io 주소에서 자동 추정합니다.
   repositoryName: "webapp-archive", // 저장소 이름이 다르면 바꾸세요.
   editFilePath: "apps.js"
@@ -17,32 +17,32 @@ const apps = [
     description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
     category: "교사업무용",
     status: "베타",
-    url: "https://example.com/counseling"
+    url: "https://script.google.com/a/macros/senedu.kr/s/AKfycbwyc7YVJMT0yffn9eOjAnB6oP_mskJqANBpMcVme4SyrJlSIzPdE0ghKkk2bWDvMhMzMQ/exec"
   },
   {
-    title: "만족도조사 분석기",
-    description: "구글폼 만족도 조사 결과를 붙여넣고 AI로 요약하는 웹앱입니다.",
-    category: "연수용",
-    status: "운영중",
-    url: "https://example.com/survey-analysis"
-  },
-  {
-    title: "발표 순서 뽑기",
-    description: "수업 중 발표 순서를 무작위로 정하는 간단한 수업 도우미입니다.",
-    category: "수업용",
-    status: "운영중",
-    url: "https://example.com/random-presenter"
-  },
-  {
-    title: "형성평가 채점 도우미",
-    description: "학생 응답을 확인하고 피드백을 정리하는 수업 지원 웹앱입니다.",
+    title: "과학 서논술형 채점",
+    description: "중3 과학 - 복사평형 서논술형 자동 채점 웹앱입니다.",
     category: "수업용",
     status: "베타",
-    url: "https://example.com/formative-check"
+    url: "https://script.google.com/macros/s/AKfycbxfCF_HOCmIvVmTInPAFqrZYjLDd7nLlebPObAXFKIu1H_qhP5kRryIGQWMEWyggnSp/exec"
   },
   {
-    title: "기안문 초안 도우미",
-    description: "학교 업무용 기안문 초안을 빠르게 정리하는 교사업무 보조 웹앱입니다.",
+    title: "수학 형성평가 채점 도우미",
+    description: "정수와 유리수 서논술형 형성평가 피드백 도우미 웹앱입니다.",
+    category: "수업용",
+    status: "베타",
+    url: "https://script.google.com/macros/s/AKfycbyqi0qRJuOCiuNvfLlVuJmDee_QE4TXBrtvx7HqizL8dEEoh6sC-3OM2bv0lb7qBcGF/exec"
+  },
+  {
+    title: "인수분해 연습 게임",
+    description: "인수분해를 연습할 수 있는 게임 웹앱입니다.",
+    category: "수업용",
+    status: "운영중",
+    url: "https://script.google.com/macros/s/AKfycby8EVxHBPZrYngLnKZanNKE7yFD9Wond_ZtOtsXcE7cbMfsKvz1YEhmUpwSm_IuuVmJ/exec"
+  },
+  {
+    title: "테스트 중",
+    description: "신일중학교 업무 보조 웹앱입니다.",
     category: "교사업무용",
     status: "베타",
     url: "https://example.com/document-draft"
