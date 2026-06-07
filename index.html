@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김종일 교사 웹앱 아카이브</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">My Web App Archive</p>
+      <h1>김종일 교사 웹앱 아카이브</h1>
+      <p class="subtitle">
+        수업과 교사 업무에 활용하는 웹앱을 한곳에 모아 관리하는 개인 포털입니다.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar" aria-label="앱 분류 필터">
+      <button class="filter-button active" data-category="전체">전체</button>
+      <button class="filter-button" data-category="수업용">수업용</button>
+      <button class="filter-button" data-category="교사업무용">교사업무용</button>
+      <button class="filter-button" data-category="연수용">연수용</button>
+      <button class="filter-button" data-category="테스트중">테스트중</button>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <span id="appCount">전체 앱 0개</span>
+    </section>
+
+    <section id="appGrid" class="app-grid" aria-label="웹앱 목록">
+      <!-- apps.js의 데이터가 이곳에 카드로 표시됩니다. -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 김종일 교사 웹앱 아카이브</p>
+  </footer>
+
+  <script src="apps.js"></script>
+</body>
+</html>
