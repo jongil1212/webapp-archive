@@ -1,22 +1,20 @@
 # 김종일 교사 웹앱 아카이브
 
-수업용, 교사업무용, 연수용 웹앱 링크를 한곳에 모아 관리하는 개인 포털 사이트입니다.
+수업용, 교사업무용, 연수용 웹앱을 한곳에 모아 관리하는 개인 포털 사이트입니다.
+GitHub Pages에 올려서 무료로 사용할 수 있습니다.
 
 ## 파일 구성
 
 ```text
-webapp-archive/
-├─ index.html   # 사이트 기본 구조
-├─ style.css    # 디자인 파일
-├─ apps.js      # 웹앱 목록 데이터와 필터 기능
-└─ README.md    # 사용 설명
+index.html   # 화면 구조
+style.css    # 디자인
+apps.js      # 웹앱 목록과 관리자 모드 설정
+README.md    # 설명 파일
 ```
 
-## 앱 목록 수정 방법
+## 웹앱 목록 수정 방법
 
-`apps.js` 파일의 `apps` 배열만 수정하면 됩니다.
-
-예시:
+대부분의 수정은 `apps.js` 파일에서 합니다.
 
 ```js
 {
@@ -24,43 +22,50 @@ webapp-archive/
   description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
   category: "교사업무용",
   status: "베타",
-  url: "https://실제주소.com"
+  url: "https://example.com/counseling"
 }
 ```
 
-사용 가능한 분류 예시:
+수정할 값은 다음과 같습니다.
 
-- 수업용
-- 교사업무용
-- 연수용
-- 테스트중
+- `title`: 앱 이름
+- `description`: 간단 설명
+- `category`: `수업용`, `교사업무용`, `연수용`, `테스트중` 중 하나 권장
+- `status`: `운영중`, `베타`, `중단` 중 하나 권장
+- `url`: 실제 웹앱 주소
 
-사용 가능한 상태 예시:
+## 관리자 모드
 
-- 운영중
-- 베타
-- 중단
+상단의 `관리자 모드` 버튼을 누른 뒤 비밀번호를 입력하면 관리자 확인용 영역이 표시됩니다.
+관리자 모드에서는 다음을 확인할 수 있습니다.
 
-## GitHub Pages 배포 방법
+- 현재 사이트 URL
+- `apps.js` 코드 수정 URL
+- 각 카드별 사이트 URL 확인 버튼
+- 각 카드별 코드 수정 URL 버튼
 
-1. GitHub에서 새 저장소를 만듭니다. 예: `webapp-archive`
-2. 이 폴더 안의 파일 4개를 저장소에 업로드합니다.
-3. 저장소의 `Settings`로 들어갑니다.
-4. 왼쪽 메뉴에서 `Pages`를 선택합니다.
-5. `Build and deployment`에서 다음처럼 설정합니다.
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-6. 저장하면 잠시 후 사이트 주소가 생성됩니다.
+기본 비밀번호는 `apps.js` 파일 상단에서 바꿀 수 있습니다.
 
-주소 예시:
-
-```text
-https://GitHub아이디.github.io/webapp-archive/
+```js
+const adminConfig = {
+  password: "1234",
+  githubUser: "",
+  repositoryName: "webapp-archive",
+  editFilePath: "apps.js"
+};
 ```
 
-## 주의할 점
+## 중요한 보안 안내
 
-- 학생용으로 배포할 경우 학교 MDM에서 `github.io` 접속이 가능한지 먼저 확인하세요.
-- 링크를 클릭하면 새 탭에서 열립니다.
-- 실제 웹앱 주소를 넣기 전까지는 `example.com`으로 연결됩니다.
+이 관리자 모드는 진짜 보안 로그인 기능이 아닙니다.
+GitHub Pages는 정적 사이트이므로 비밀번호가 코드 안에 들어가고, 아는 사람은 코드를 볼 수 있습니다.
+따라서 다음 정보는 절대 넣지 마세요.
+
+- 학생 개인정보
+- 상담 내용
+- 비밀번호
+- API 키
+- 수정 권한이 있는 비공개 문서 링크
+- 외부에 공개되면 안 되는 학교 업무 자료
+
+이 기능은 어디까지나 선생님이 혼자 관리할 때 편하게 보기 위한 간단한 화면 숨김 기능입니다.

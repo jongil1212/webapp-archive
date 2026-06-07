@@ -9,7 +9,10 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <p class="eyebrow">My Web App Archive</p>
+      <div class="header-top">
+        <p class="eyebrow">My Web App Archive</p>
+        <button id="adminButton" class="admin-button" type="button">관리자 모드</button>
+      </div>
       <h1>김종일 교사 웹앱 아카이브</h1>
       <p class="subtitle">
         수업과 교사 업무에 활용하는 웹앱을 한곳에 모아 관리하는 개인 포털입니다.
@@ -18,6 +21,29 @@
   </header>
 
   <main class="container">
+    <section id="adminPanel" class="admin-panel hidden" aria-label="관리자 정보">
+      <div>
+        <p class="admin-label">관리자 모드 ON</p>
+        <h2>사이트 관리 바로가기</h2>
+        <p class="admin-help">
+          현재 사이트 주소와 앱 목록 코드 수정 주소를 빠르게 확인할 수 있습니다.
+        </p>
+      </div>
+      <div class="admin-link-grid">
+        <div class="admin-link-box">
+          <span>현재 사이트 주소</span>
+          <a id="currentSiteLink" href="#" target="_blank" rel="noopener noreferrer">사이트 열기</a>
+        </div>
+        <div class="admin-link-box">
+          <span>앱 목록 코드 수정</span>
+          <a id="codeEditLink" href="#" target="_blank" rel="noopener noreferrer">apps.js 수정하기</a>
+        </div>
+      </div>
+      <p class="admin-warning">
+        ※ 이 비밀번호는 간단한 화면 숨김용입니다. GitHub Pages 정적 사이트 특성상 진짜 보안 로그인은 아니므로 개인정보나 비밀 링크는 넣지 마세요.
+      </p>
+    </section>
+
     <section class="toolbar" aria-label="앱 분류 필터">
       <button class="filter-button active" data-category="전체">전체</button>
       <button class="filter-button" data-category="수업용">수업용</button>
