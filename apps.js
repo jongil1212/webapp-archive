@@ -19,7 +19,7 @@ const apps = [
     description: "학생 상담 내용을 입력하고 조회하는 개인 업무용 웹앱입니다.",
     category: "교사업무용",
     status: "베타",
-    url: "https://script.google.com/a/macros/senedu.kr/s/AKfycbwyc7YVJMT0yffn9eOjAnB6oP_mskJqANBpMcVme4SyrJlSIzPdE0ghKkk2bWDvMhMzMQ/exec",
+    url: "https://script.google.com/a/macros/senedu.kr/s/AKfycbzVLxD_k5-RK91rS0k2YJ_Hy3maAlO6ksXFYCGAprBw2zWizVHgr0DEcwsRAzDvL9SCBA/exec",
     editUrl: "https://docs.google.com/spreadsheets/d/1DpclpsP2rZyn1VmrrcgDsBCLf8vxylOBNzTkVXOcig0/edit?usp=sharing"
   },
   {
